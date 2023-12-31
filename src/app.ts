@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import morgan from 'morgan';
 import sequelize from './infrastructure/db/config/sequelize';
 import { models } from './infrastructure/db/models';
+import taskRoute from './infrastructure/routes/taskRoute';
 
 async function runApp() {
   const app: Express = express();
@@ -23,6 +24,7 @@ async function runApp() {
   app.use(morgan('common'));
 
   // * routes
+  app.use(taskRoute);
 
   return app;
 }
